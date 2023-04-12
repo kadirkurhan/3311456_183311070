@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:mobile_programming/store/main.dart';
+import 'constants/icons.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +13,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final MainController controller = Get.put(MainController());
+
+    return GetMaterialApp(
       title: 'Fakültem',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -26,20 +31,42 @@ class MyApp extends StatelessWidget {
           leading: Container(
             margin: const EdgeInsets.all(10),
             alignment: Alignment.center,
-            child: SvgPicture.asset("assets/icons/Arrow - Left 2.svg"),
             decoration: BoxDecoration(
-                color: Color(0xffF7F8F8),
+                color: const Color(0xffF7F8F8),
                 borderRadius: BorderRadius.circular(10)),
+            child: SvgPicture.asset(SVG_LEFT_ARROW),
           ),
+          actions: [
+            Container(
+              margin: const EdgeInsets.all(10),
+              alignment: Alignment.center,
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(
+                  color: const Color(0xffF7F8F8),
+                  borderRadius: BorderRadius.circular(10)),
+              child: SvgPicture.asset(SVG_DOTS),
+            ),
+          ],
           title: const Text("Fakültem2",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24)),
         ),
-        body: const Center(
+        body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
                 'You have pushed the button this many times:',
+              ),
+              ElevatedButton(
+                onPressed: () => controller.increment(),
+                child: GetX<MainController>(
+                  builder: (controller) {
+                    return Text(
+                      '${controller.count}',
+                    );
+                  },
+                ),
               ),
             ],
           ),
