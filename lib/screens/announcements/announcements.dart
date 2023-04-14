@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_programming/components/appbar/appbar.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:mobile_programming/store/main.dart';
 
 class AnnouncementScreen extends StatefulWidget {
   const AnnouncementScreen({super.key});
@@ -22,11 +23,13 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
   }
 
   Future<void> _loadMessages() async {
-    final String response =
-        await rootBundle.loadString('assets/data/init.json');
-    final data = await json.decode(response);
+    MainController controller = Get.find();
+    // final String response =
+    //     await rootBundle.loadString('assets/data/init.json');
+    // final data = await json.decode(response);
+
     setState(() {
-      _messages = data['obj'];
+      _messages = controller.announcements;
     });
   }
 
@@ -36,11 +39,10 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.black,
         onPressed: () {
-          Get.toNamed("/add-announcement");
+          Get.offAndToNamed("/add-announcement");
         },
         child: const Icon(Icons.add, color: Colors.white),
       ),
-      //comment.
       appBar: AppBarComponent("Duyurular", shouldLeadingShow: true),
       body: SafeArea(
         child: Container(
