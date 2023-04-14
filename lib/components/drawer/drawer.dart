@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../store/main.dart';
+
 class DrawerMenuComponent extends StatelessWidget {
   const DrawerMenuComponent({
     super.key,
@@ -12,27 +14,40 @@ class DrawerMenuComponent extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
-            decoration: BoxDecoration(color: Colors.black),
-            child: Column(
-              children: [
-                ClipOval(
-                  child: Image.asset(
-                    'assets/icons/profileImage.jpg',
-                    fit: BoxFit.cover,
-                    width: 110.0,
-                    height: 110.0,
-                  ),
-                ),
-                const Expanded(
-                  child: Text(
-                    "Kadir Kurhan",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                )
-              ],
+          UserAccountsDrawerHeader(
+            accountName: GetX<MainController>(
+              builder: (controller) {
+                return Text(
+                  '${controller.user.value.username}',
+                );
+              },
+            ),
+            accountEmail: Text('john.doe@example.com'),
+            currentAccountPicture: CircleAvatar(
+              backgroundImage: AssetImage('assets/icons/profileImage.jpg'),
             ),
           ),
+          // DrawerHeader(
+          //   decoration: BoxDecoration(color: Colors.black),
+          //   child: Column(
+          //     children: [
+          //       ClipOval(
+          //         child: Image.asset(
+          //           'assets/icons/profileImage.jpg',
+          //           fit: BoxFit.cover,
+          //           width: 110.0,
+          //           height: 110.0,
+          //         ),
+          //       ),
+          //       const Expanded(
+          //         child: Text(
+          //           "Kadir Kurhan",
+          //           style: TextStyle(color: Colors.white),
+          //         ),
+          //       )
+          //     ],
+          //   ),
+          // ),
           ListTile(
             title: const Text("Duyurular"),
             onTap: () {

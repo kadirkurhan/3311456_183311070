@@ -64,7 +64,7 @@ flutter:
     - assets/icons/login.avif
     - assets/icons/register.jpg
     - assets/icons/profileImage.jpg
-
+    - assets/data/init.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
