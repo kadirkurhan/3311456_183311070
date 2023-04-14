@@ -38,4 +38,9 @@ class MainController extends GetxController {
     print(announcements);
     update();
   }
+
+  void removeAnnouncement(int index) {
+    announcements.removeAt(index);
+    update();
+  }
 }

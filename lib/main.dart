@@ -48,8 +48,6 @@ class _MyAppState extends State<MyApp> {
             name: '/',
             transition: Transition.fade,
             page: () {
-              print("selam");
-
               if (controller.token.value == "") {
                 print("if worked");
                 return const LoginScreen();

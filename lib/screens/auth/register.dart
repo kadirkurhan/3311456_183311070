@@ -8,9 +8,9 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String inputUserName = "";
     MainController controller = Get.find();
     return Scaffold(
-      //comment.
       appBar: AppBarComponent("Register", shouldLeadingShow: false),
       body: SafeArea(
         child: Container(
@@ -22,6 +22,9 @@ class RegisterScreen extends StatelessWidget {
               Image.asset('assets/icons/register.jpg',
                   alignment: Alignment.topCenter),
               TextFormField(
+                onChanged: (value) {
+                  inputUserName = value;
+                },
                 decoration: InputDecoration(
                   hintText: 'Email',
                   fillColor: Colors.grey[200],
@@ -61,7 +64,7 @@ class RegisterScreen extends StatelessWidget {
               const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
-                  controller.setUser("Kadir Kurhan3");
+                  controller.setUser(inputUserName);
                   Get.toNamed("/");
                 },
                 style: ElevatedButton.styleFrom(

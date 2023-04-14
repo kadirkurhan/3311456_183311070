@@ -15,22 +15,20 @@ class AnnouncementScreen extends StatefulWidget {
 
 class _AnnouncementScreenState extends State<AnnouncementScreen> {
   List<dynamic> _messages = [];
+  MainController controller = Get.find();
 
   @override
   void initState() {
     super.initState();
-    _loadMessages();
-  }
-
-  Future<void> _loadMessages() async {
-    MainController controller = Get.find();
-    // final String response =
-    //     await rootBundle.loadString('assets/data/init.json');
-    // final data = await json.decode(response);
-
     setState(() {
       _messages = controller.announcements;
     });
+  }
+
+  Future<void> _loadMessages() async {
+    // final String response =
+    //     await rootBundle.loadString('assets/data/init.json');
+    // final data = await json.decode(response);
   }
 
   @override
@@ -47,20 +45,26 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
-          child: ListView.builder(
-            itemCount: _messages.length,
-            itemBuilder: (BuildContext context, int index) {
-              return InkWell(
-                onTap: () {
-                  Get.snackbar(
-                      _messages[index]['title'], _messages[index]['message']);
-                },
-                child: ListTile(
-                  title: Text(_messages[index]['title']),
-                  subtitle: Text(_messages[index]['message']),
-                ),
-              );
-            },
+          child: Obx(
+            () => ListView.builder(
+              itemCount: _messages.length,
+              itemBuilder: (BuildContext context, int index) {
+                return InkWell(
+                  onTap: () {
+                    Get.snackbar(
+                        _messages[index]['title'], _messages[index]['message']);
+                  },
+                  onDoubleTap: () {
+                    Get.snackbar("Duyuru", "Duyuru başarıyla kaldırıldı");
+                    controller.removeAnnouncement(index);
+                  },
+                  child: ListTile(
+                    title: Text(_messages[index]['title']),
+                    subtitle: Text(_messages[index]['message']),
+                  ),
+                );
+              },
+            ),
           ),
         ),
       ),

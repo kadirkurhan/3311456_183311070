@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:mobile_programming/routes/routes.dart';
 
 import '../../constants/icons.dart';
 
@@ -19,7 +20,8 @@ AppBar AppBarComponent(String title, {bool shouldLeadingShow = true}) {
           foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
         ),
         onPressed: () {
-          Get.snackbar("yasemin", "bak postacı geliyor selam veriyor");
+          Get.offAllNamed(Routes.Login);
+          Get.snackbar("Bilgilendirme", "Çıkış Yapıldı");
         },
         child: Container(
           margin: const EdgeInsets.all(10),

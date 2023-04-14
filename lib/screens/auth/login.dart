@@ -8,9 +8,9 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String inputUserName = "";
     MainController controller = Get.find();
     return Scaffold(
-      //appBar: AppBarComponent("Login", shouldLeadingShow: false),
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -21,6 +21,9 @@ class LoginScreen extends StatelessWidget {
               Image.asset('assets/icons/login.avif',
                   alignment: Alignment.topCenter),
               TextFormField(
+                onChanged: (value) {
+                  inputUserName = value;
+                },
                 decoration: InputDecoration(
                   hintText: 'Email',
                   fillColor: Colors.grey[200],
@@ -47,7 +50,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
-                  controller.setUser("Kadir Kurhan");
+                  controller.setUser(inputUserName);
                   Get.toNamed("/");
                 },
                 style: ElevatedButton.styleFrom(
