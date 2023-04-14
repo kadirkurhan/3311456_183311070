@@ -19,9 +19,6 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
-              ),
               ElevatedButton(
                 onPressed: () => controller.increment(),
                 child: GetX<MainController>(
@@ -32,9 +29,6 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
               ),
-              ElevatedButton(
-                  onPressed: () => Get.toNamed("/login"),
-                  child: const Text("next page")),
             ],
           ),
         ),
