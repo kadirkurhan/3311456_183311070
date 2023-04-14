@@ -33,6 +33,13 @@ class _AnnouncementScreenState extends State<AnnouncementScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.black,
+        onPressed: () {
+          Get.toNamed("/add-announcement");
+        },
+        child: const Icon(Icons.add, color: Colors.white),
+      ),
       //comment.
       appBar: AppBarComponent("Duyurular", shouldLeadingShow: true),
       body: SafeArea(

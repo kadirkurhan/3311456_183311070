@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_programming/components/appbar/appbar.dart';
-import 'package:mobile_programming/store/main.dart';
 
-class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({super.key});
+class AddAnnouncementScreen extends StatelessWidget {
+  const AddAnnouncementScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    MainController controller = Get.find();
     return Scaffold(
-      //comment.
-      appBar: AppBarComponent("Register", shouldLeadingShow: false),
+      appBar: AppBarComponent("Add Announcement", shouldLeadingShow: false),
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -19,11 +16,9 @@ class RegisterScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Image.asset('assets/icons/register.jpg',
-                  alignment: Alignment.topCenter),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: 'Email',
+                  hintText: 'Title',
                   fillColor: Colors.grey[200],
                   filled: true,
                   border: OutlineInputBorder(
@@ -36,20 +31,7 @@ class RegisterScreen extends StatelessWidget {
               TextFormField(
                 obscureText: true,
                 decoration: InputDecoration(
-                  hintText: 'Password',
-                  fillColor: Colors.grey[200],
-                  filled: true,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20.0),
-              TextFormField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: 'Confirm Password',
+                  hintText: 'Message',
                   fillColor: Colors.grey[200],
                   filled: true,
                   border: OutlineInputBorder(
@@ -60,10 +42,7 @@ class RegisterScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20.0),
               ElevatedButton(
-                onPressed: () {
-                  controller.setUser("Kadir Kurhan3");
-                  Get.toNamed("/");
-                },
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueAccent,
                   foregroundColor: Colors.white,
@@ -73,7 +52,7 @@ class RegisterScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                 ),
                 child: const Text(
-                  'Kayıt Ol',
+                  'Yayınla',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_programming/routes/routes.dart';
+import 'package:mobile_programming/screens/announcements/add.dart';
 import 'package:mobile_programming/screens/announcements/announcements.dart';
 import 'package:mobile_programming/screens/auth/login.dart';
 import 'package:mobile_programming/screens/auth/register.dart';
@@ -70,6 +71,10 @@ class _MyAppState extends State<MyApp> {
           GetPage(
               name: '/announcements',
               page: () => const AnnouncementScreen(),
+              transition: Transition.fade),
+          GetPage(
+              name: '/add-announcement',
+              page: () => const AddAnnouncementScreen(),
               transition: Transition.fade),
         ],
         home: const HomeScreen());
