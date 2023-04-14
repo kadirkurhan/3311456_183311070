@@ -8,6 +8,7 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //comment.
       appBar: AppBarComponent("Register", shouldLeadingShow: false),
       body: SafeArea(
         child: Container(
