@@ -26,6 +26,7 @@ class DrawerMenuComponent extends StatelessWidget {
             currentAccountPicture: CircleAvatar(
               backgroundImage: AssetImage('assets/icons/profileImage.jpg'),
             ),
+            decoration: BoxDecoration(color: Colors.indigo),
           ),
           ListTile(
             title: const Text("Duyurular"),
