@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile_programming/routes/routes.dart';
 import 'package:mobile_programming/screens/auth/login.dart';
 import 'package:mobile_programming/screens/auth/register.dart';
 import 'package:mobile_programming/screens/home/home.dart';
@@ -11,13 +12,27 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final MainController controller = Get.put(MainController());
+  State<MyApp> createState() => _MyAppState();
+}
 
+class _MyAppState extends State<MyApp> {
+  final MainController controller = Get.put(MainController());
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   if (controller.token.value.isEmpty) {
+  //     WidgetsBinding.instance
+  //         .addPostFrameCallback((_) => Get.toNamed(Routes.Login));
+  //   }
+  // }
+
+  @override
+  Widget build(BuildContext context) {
     return GetMaterialApp(
         title: 'Fakültem',
         debugShowCheckedModeBanner: false,
@@ -29,17 +44,28 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         getPages: [
           GetPage(
-              name: '/',
-              transition: Transition.fade,
-              page: () {
-                if (AuthMiddleware()) {}
-                return controller.token.value.isEmpty
-                    ? const LoginScreen()
-                    : const HomeScreen();
-              }),
+            name: '/',
+            transition: Transition.fade,
+            page: () {
+              print("selam");
+
+              if (controller.token.value == "") {
+                print("if worked");
+                return const LoginScreen();
+              }
+              print("if not worked");
+
+              return const HomeScreen();
+            },
+          ),
           GetPage(
-              name: '/register',
-              page: () => const RegisterScreen(),
+            name: '/register',
+            page: () => const RegisterScreen(),
+            transition: Transition.fade,
+          ),
+          GetPage(
+              name: '/login',
+              page: () => const LoginScreen(),
               transition: Transition.fade),
         ],
         home: const HomeScreen());

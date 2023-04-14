@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_programming/components/appbar/appbar.dart';
 
+import '../../components/drawer/drawer.dart';
 import '../../store/main.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,28 +12,31 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     MainController controller = Get.find();
     return Scaffold(
-      appBar: AppBarComponent("Home"),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            ElevatedButton(
-              onPressed: () => controller.increment(),
-              child: GetX<MainController>(
-                builder: (controller) {
-                  return Text(
-                    '${controller.count}',
-                  );
-                },
+      appBar: AppBarComponent("Home", shouldLeadingShow: false),
+      drawer: DrawerMenuComponent(),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'You have pushed the button this many times:',
               ),
-            ),
-            ElevatedButton(
-                onPressed: () => Get.toNamed("/register"),
-                child: const Text("next page")),
-          ],
+              ElevatedButton(
+                onPressed: () => controller.increment(),
+                child: GetX<MainController>(
+                  builder: (controller) {
+                    return Text(
+                      '${controller.count}',
+                    );
+                  },
+                ),
+              ),
+              ElevatedButton(
+                  onPressed: () => Get.toNamed("/login"),
+                  child: const Text("next page")),
+            ],
+          ),
         ),
       ),
     );
