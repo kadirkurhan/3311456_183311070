@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mobile_programming/components/appbar/appbar.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -7,51 +8,76 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarComponent("Login"),
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: 'Email',
-                fillColor: Colors.grey[200],
-                filled: true,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                  borderSide: BorderSide.none,
+      appBar: AppBarComponent("Login", shouldLeadingShow: false),
+      body: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Image.asset('assets/icons/login.avif',
+                  alignment: Alignment.topCenter),
+              TextFormField(
+                decoration: InputDecoration(
+                  hintText: 'Email',
+                  fillColor: Colors.grey[200],
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                    borderSide: BorderSide.none,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: 20.0),
-            TextFormField(
-              obscureText: true,
-              decoration: InputDecoration(
-                hintText: 'Password',
-                fillColor: Colors.grey[200],
-                filled: true,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12.0),
-                  borderSide: BorderSide.none,
+              const SizedBox(height: 20.0),
+              TextFormField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: 'Password',
+                  fillColor: Colors.grey[200],
+                  filled: true,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                    borderSide: BorderSide.none,
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: 20.0),
-            ElevatedButton(
-              child: Text('Giriş Yap'),
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                primary: Colors.blue,
-                onPrimary: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12.0),
+              const SizedBox(height: 20.0),
+              ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blueAccent,
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 16.0),
+                child: const Text(
+                  'Giriş Yap',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
-            ),
-          ],
+              ElevatedButton(
+                onPressed: () {
+                  Get.toNamed("/register");
+                },
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.transparent),
+                  elevation: MaterialStateProperty.all<double>(0),
+                  overlayColor:
+                      MaterialStateProperty.all<Color>(Colors.transparent),
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.black),
+                ),
+                child: const Text(
+                  'Hesabınız yok mu?',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
