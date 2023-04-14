@@ -1,9 +1,17 @@
+import 'package:flutter/src/widgets/navigator.dart';
 import 'package:get/get.dart';
 import 'package:mobile_programming/store/main.dart';
 
-bool AuthMiddleware() {
+class AuthMiddleware extends GetMiddleware {
   MainController controller = Get.find();
-  print(controller.token.value);
+  @override
+  RouteSettings? redirect(String? route) {
+    if (controller.token.isEmpty) {
+      print("it is emty");
+      return const RouteSettings(name: '/login');
+    }
+    print("it is not emty");
 
-  return true;
+    return null;
+  }
 }
