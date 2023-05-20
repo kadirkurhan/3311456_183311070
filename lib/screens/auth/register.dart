@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_programming/components/appbar/appbar.dart';
+import 'package:mobile_programming/firebase/auth/auth.dart';
 import 'package:mobile_programming/store/main.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -8,7 +9,9 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String inputUserName = "";
+    String inputEmail = "";
+    String inputPassword = "";
+
     MainController controller = Get.find();
     return Scaffold(
       appBar: AppBarComponent("Register", shouldLeadingShow: false),
@@ -23,7 +26,7 @@ class RegisterScreen extends StatelessWidget {
                   alignment: Alignment.topCenter),
               TextFormField(
                 onChanged: (value) {
-                  inputUserName = value;
+                  inputEmail = value;
                 },
                 decoration: InputDecoration(
                   hintText: 'Email',
@@ -37,6 +40,7 @@ class RegisterScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20.0),
               TextFormField(
+                onChanged: (value) => {inputPassword = value},
                 obscureText: true,
                 decoration: InputDecoration(
                   hintText: 'Password',
@@ -63,8 +67,10 @@ class RegisterScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20.0),
               ElevatedButton(
-                onPressed: () {
-                  controller.setUser(inputUserName);
+                onPressed: () async {
+                  await Auth().createUserWithEmailAndPassword(
+                      email: inputEmail, password: inputPassword);
+                  controller.setUser(inputEmail);
                   Get.toNamed("/");
                 },
                 style: ElevatedButton.styleFrom(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_programming/components/appbar/appbar.dart';
+import 'package:mobile_programming/firebase/auth/auth.dart';
 import 'package:mobile_programming/store/main.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -8,7 +9,9 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String inputUserName = "";
+    String inputEmail = "";
+    String inputPassword = "";
+
     MainController controller = Get.find();
     return Scaffold(
       body: SafeArea(
@@ -22,7 +25,7 @@ class LoginScreen extends StatelessWidget {
                   alignment: Alignment.topCenter),
               TextFormField(
                 onChanged: (value) {
-                  inputUserName = value;
+                  inputEmail = value;
                 },
                 decoration: InputDecoration(
                   hintText: 'Email',
@@ -36,6 +39,7 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20.0),
               TextFormField(
+                onChanged: (value) => {inputPassword = value},
                 obscureText: true,
                 decoration: InputDecoration(
                   hintText: 'Password',
@@ -49,9 +53,15 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 20.0),
               ElevatedButton(
-                onPressed: () {
-                  controller.setUser(inputUserName);
-                  Get.toNamed("/");
+                onPressed: () async {
+                  try {
+                    await Auth().signInWithEmailAndPassword(
+                        email: inputEmail, password: inputPassword);
+                    controller.setUser(inputEmail);
+                    Get.toNamed("/");
+                  } catch (e) {
+                    print("login error + ${e}");
+                  }
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueAccent,
