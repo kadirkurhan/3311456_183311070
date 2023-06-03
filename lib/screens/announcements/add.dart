@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_programming/components/appbar/appbar.dart';
+import 'package:mobile_programming/firebase/firestore/announcements.dart';
 import 'package:mobile_programming/store/main.dart';
 
 class AddAnnouncementScreen extends StatelessWidget {
@@ -9,6 +10,7 @@ class AddAnnouncementScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MainController controller = Get.find();
+
     String inputTitle = "";
     String inputMessage = "";
     return Scaffold(
@@ -60,6 +62,8 @@ class AddAnnouncementScreen extends StatelessWidget {
                   print(inputTitle);
                   print(inputMessage);
                   controller.addAnnouncement(inputTitle, inputMessage);
+                  AnnouncementsFirebaseStore()
+                      .addAnnouncement(inputTitle, inputMessage);
                   Get.snackbar("Duyuru", "Duyurunuz yayınlanmıştır");
                   Get.offNamed("/announcements");
                 },
