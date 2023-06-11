@@ -1,20 +1,27 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mobile_programming/firebase/auth/auth.dart';
 import 'package:mobile_programming/routes/routes.dart';
 import 'package:mobile_programming/screens/announcements/add.dart';
 import 'package:mobile_programming/screens/announcements/announcements.dart';
 import 'package:mobile_programming/screens/auth/login.dart';
 import 'package:mobile_programming/screens/auth/register.dart';
+import 'package:mobile_programming/screens/file/file.dart';
 import 'package:mobile_programming/screens/home/home.dart';
+import 'package:mobile_programming/screens/notification/notification.dart';
 import 'package:mobile_programming/store/main.dart';
 
 import 'middleware/auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
+//import 'package:flutter_menu/firebase_options.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
 
+  await Firebase.initializeApp();
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+  print(fcmToken);
   runApp(const MyApp());
 }
 
@@ -52,12 +59,10 @@ class _MyAppState extends State<MyApp> {
             name: '/',
             transition: Transition.fade,
             page: () {
-              if (controller.token.value == "") {
-                print("if worked");
+              if (controller.token.value.isEmpty ||
+                  controller.token.value == null) {
                 return const LoginScreen();
               }
-              print("if not worked");
-
               return const HomeScreen();
             },
           ),
@@ -77,6 +82,14 @@ class _MyAppState extends State<MyApp> {
           GetPage(
               name: '/add-announcement',
               page: () => const AddAnnouncementScreen(),
+              transition: Transition.fade),
+          GetPage(
+              name: '/notifications',
+              page: () => const NotificationScreen(),
+              transition: Transition.fade),
+          GetPage(
+              name: '/file',
+              page: () => const FileScreen(),
               transition: Transition.fade),
         ],
         home: const HomeScreen());

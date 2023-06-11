@@ -34,6 +34,18 @@ class DrawerMenuComponent extends StatelessWidget {
               Get.toNamed("/announcements");
             },
           ),
+          ListTile(
+            title: const Text("Bildirimler"),
+            onTap: () {
+              Get.toNamed("/notifications");
+            },
+          ),
+          ListTile(
+            title: const Text("Dosya İşlemleri"),
+            onTap: () {
+              Get.toNamed("/file");
+            },
+          ),
         ],
       ),
     );

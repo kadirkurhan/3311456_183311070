@@ -13,6 +13,7 @@ class AddAnnouncementScreen extends StatelessWidget {
 
     String inputTitle = "";
     String inputMessage = "";
+
     return Scaffold(
       appBar: AppBarComponent("Add", shouldLeadingShow: false),
       body: SafeArea(

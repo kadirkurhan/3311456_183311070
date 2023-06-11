@@ -3,10 +3,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:mobile_programming/firebase/auth/auth.dart';
 import 'package:mobile_programming/routes/routes.dart';
+import 'package:mobile_programming/store/main.dart';
 
 import '../../constants/icons.dart';
 
 AppBar AppBarComponent(String title, {bool shouldLeadingShow = true}) {
+  MainController controller = Get.find();
   return AppBar(
     elevation: 0.0,
     backgroundColor: Colors.white,
@@ -21,7 +23,7 @@ AppBar AppBarComponent(String title, {bool shouldLeadingShow = true}) {
           foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
         ),
         onPressed: () {
-          print(Auth().currentUser);
+          controller.removeToken();
           Auth().signOut();
           Get.offAllNamed(Routes.Login);
           Get.snackbar("Bilgilendirme", "Çıkış Yapıldı");

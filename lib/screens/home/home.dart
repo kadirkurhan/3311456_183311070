@@ -8,6 +8,9 @@ import '../../store/main.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  final String imageUrl =
+      'https://earthquake-images.s3.eu-central-1.amazonaws.com/4.JPG';
+
   @override
   Widget build(BuildContext context) {
     MainController controller = Get.find();
@@ -19,6 +22,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Image.network(imageUrl),
               ElevatedButton(
                 onPressed: () => controller.increment(),
                 child: GetX<MainController>(

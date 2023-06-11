@@ -39,6 +39,10 @@ dependencies:
   firebase_core:
   firebase_auth:
   cloud_firestore:
+  http:
+  path_provider:
+  firebase_messaging: ^14.6.2
+  flutter_menu: ^0.4.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

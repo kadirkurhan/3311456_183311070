@@ -23,6 +23,12 @@ class MainController extends GetxController {
     update();
   }
 
+  void removeToken() {
+    print("removedToken");
+    token.value = "";
+    update();
+  }
+
   void setUser(String name) {
     user.value = UserModel(username: name);
     update();

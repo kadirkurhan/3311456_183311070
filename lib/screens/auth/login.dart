@@ -58,6 +58,7 @@ class LoginScreen extends StatelessWidget {
                     await Auth().signInWithEmailAndPassword(
                         email: inputEmail, password: inputPassword);
                     controller.setUser(inputEmail);
+                    controller.setToken(inputEmail);
                     Get.toNamed("/");
                   } catch (e) {
                     print("login error + ${e}");
