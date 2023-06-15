@@ -9,6 +9,7 @@ import 'package:mobile_programming/screens/auth/login.dart';
 import 'package:mobile_programming/screens/auth/register.dart';
 import 'package:mobile_programming/screens/file/file.dart';
 import 'package:mobile_programming/screens/home/home.dart';
+import 'package:mobile_programming/screens/message/message.dart';
 import 'package:mobile_programming/screens/notification/notification.dart';
 import 'package:mobile_programming/store/main.dart';
 
@@ -34,15 +35,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final MainController controller = Get.put(MainController());
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   if (controller.token.value.isEmpty) {
-  //     WidgetsBinding.instance
-  //         .addPostFrameCallback((_) => Get.toNamed(Routes.Login));
-  //   }
-  // }
-//test
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -90,6 +83,10 @@ class _MyAppState extends State<MyApp> {
           GetPage(
               name: '/file',
               page: () => const FileScreen(),
+              transition: Transition.fade),
+          GetPage(
+              name: '/message',
+              page: () => const MessageScreen(),
               transition: Transition.fade),
         ],
         home: const HomeScreen());

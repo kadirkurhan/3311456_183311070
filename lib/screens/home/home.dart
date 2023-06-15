@@ -22,7 +22,10 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.network(imageUrl),
+              Image.network(
+                imageUrl,
+                width: 256,
+              ),
               ElevatedButton(
                 onPressed: () => controller.increment(),
                 child: GetX<MainController>(
