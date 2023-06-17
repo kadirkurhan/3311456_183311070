@@ -14,6 +14,10 @@ class MainController extends GetxController {
     }
   ].obs;
 
+  List<Map<String, dynamic>> messages = [
+    {"title": "test", "message": "test"}
+  ].obs;
+
   void increment() {
     count.value++;
     update();
@@ -56,5 +60,16 @@ class MainController extends GetxController {
     update();
     print(
         "setLastMessageTitle launched and input is: $input and sqfliteMessageTitle is $sqfliteMessageTitle");
+  }
+
+  void setAllMessages(List<String> list) {
+    list.forEach((element) {
+      Map<String, dynamic> message = {
+        "title": element,
+        "message": element
+        // Diğer anahtarlar ve değerler eklenebilir...
+      };
+      messages.add(message);
+    });
   }
 }

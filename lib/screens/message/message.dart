@@ -140,6 +140,19 @@ class _MessageScreenState extends State<MessageScreen> {
                           },
                         ),
                         Text(controller.sqfliteMessageTitle.value),
+                        ElevatedButton(
+                          child: const Text('Tümünü sil'),
+                          onPressed: () async {
+                            var deletedItemsCount = await db!.delete(
+                              'messages',
+                            );
+
+                            print(await db!.query("messages"));
+
+                            Get.snackbar("Silinen kayıtlar",
+                                deletedItemsCount.toString());
+                          },
+                        ),
                       ],
                     ),
                   ),
