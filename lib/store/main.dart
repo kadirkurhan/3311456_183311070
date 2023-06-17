@@ -5,6 +5,7 @@ class MainController extends GetxController {
   var count = 0.obs;
   var token = "".obs;
   var user = UserModel(username: '').obs;
+  var sqfliteMessageTitle = "".obs;
 
   List<Map> announcements = [
     {
@@ -48,5 +49,12 @@ class MainController extends GetxController {
   void removeAnnouncement(int index) {
     announcements.removeAt(index);
     update();
+  }
+
+  void setLastMessageTitle(String input) {
+    sqfliteMessageTitle.value = input;
+    update();
+    print(
+        "setLastMessageTitle launched and input is: $input and sqfliteMessageTitle is $sqfliteMessageTitle");
   }
 }
