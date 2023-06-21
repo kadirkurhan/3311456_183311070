@@ -13,6 +13,7 @@ import 'package:mobile_programming/screens/graphics/graphics.dart';
 import 'package:mobile_programming/screens/home/home.dart';
 import 'package:mobile_programming/screens/message/message.dart';
 import 'package:mobile_programming/screens/notification/notification.dart';
+import 'package:mobile_programming/screens/widgets/widgets.dart';
 import 'package:mobile_programming/store/main.dart';
 
 import 'middleware/auth.dart';
@@ -97,6 +98,10 @@ class _MyAppState extends State<MyApp> {
           GetPage(
               name: '/gestures',
               page: () => const GesturesScreen(),
+              transition: Transition.fade),
+          GetPage(
+              name: '/widgets',
+              page: () => const WidgetsScreen(),
               transition: Transition.fade),
         ],
         home: const HomeScreen());

@@ -69,6 +69,12 @@ class DrawerMenuComponent extends StatelessWidget {
             onTap: () {
               Get.toNamed("/gestures");
             },
+          ),
+          ListTile(
+            title: const Text("Widgets"),
+            onTap: () {
+              Get.toNamed("/widgets");
+            },
           )
         ],
       ),
