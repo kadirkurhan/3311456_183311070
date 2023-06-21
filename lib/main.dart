@@ -8,6 +8,7 @@ import 'package:mobile_programming/screens/announcements/announcements.dart';
 import 'package:mobile_programming/screens/auth/login.dart';
 import 'package:mobile_programming/screens/auth/register.dart';
 import 'package:mobile_programming/screens/file/file.dart';
+import 'package:mobile_programming/screens/graphics/graphics.dart';
 import 'package:mobile_programming/screens/home/home.dart';
 import 'package:mobile_programming/screens/message/message.dart';
 import 'package:mobile_programming/screens/notification/notification.dart';
@@ -87,6 +88,10 @@ class _MyAppState extends State<MyApp> {
           GetPage(
               name: '/message',
               page: () => const MessageScreen(),
+              transition: Transition.fade),
+          GetPage(
+              name: '/graphics',
+              page: () => const GraphicsScreen(),
               transition: Transition.fade),
         ],
         home: const HomeScreen());

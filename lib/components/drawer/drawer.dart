@@ -29,6 +29,12 @@ class DrawerMenuComponent extends StatelessWidget {
             decoration: BoxDecoration(color: Colors.indigo),
           ),
           ListTile(
+            title: const Text("Anasayfa"),
+            onTap: () {
+              Get.toNamed("/home");
+            },
+          ),
+          ListTile(
             title: const Text("Duyurular"),
             onTap: () {
               Get.toNamed("/announcements");
@@ -50,6 +56,12 @@ class DrawerMenuComponent extends StatelessWidget {
             title: const Text("Mesaj"),
             onTap: () {
               Get.toNamed("/message");
+            },
+          ),
+          ListTile(
+            title: const Text("Grafik"),
+            onTap: () {
+              Get.toNamed("/graphics");
             },
           )
         ],

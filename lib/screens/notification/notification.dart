@@ -15,8 +15,11 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
+  // final String apiUrl =
+  //     'https://3dff-176-54-213-4.ngrok-free.app/api/emergency/create';
+
   final String apiUrl =
-      'https://3dff-176-54-213-4.ngrok-free.app/api/emergency/create';
+      "http://ec2-3-72-63-87.eu-central-1.compute.amazonaws.com/api/emergency/create";
 
   final String emailUrl =
       'https://sxr1s0a06j.execute-api.eu-central-1.amazonaws.com/ses/api/email';
@@ -26,11 +29,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
       Uri.parse(emailUrl),
       headers: {'Content-Type': 'application/json'},
     );
-
+    print(response);
     if (response.statusCode == 200) {
       print('email isteği başarılı');
     } else {
-      print('email isteği başarısız: ${response.body}');
+      print('email isteği başarısız: ${response}');
     }
   }
 
