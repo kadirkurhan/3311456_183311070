@@ -9,5 +9,6 @@ Mobil ödevi için hazırlanmış olan uygulamamın ekran görüntüleri altta g
 <img width="158" alt="Screenshot at Apr 14 21-40-03" src="https://user-images.githubusercontent.com/67430871/232130309-72702f2b-6823-4eb4-a48b-61f684b45c73.png">
 </p>
 
+AWS üzerinde konumlandırılmış infrastructure yapısı alttaki resimde görsele dökülmüştür.
 ![Web App Reference Architecture V2](https://github.com/kadirkurhan/3311456_183311070/assets/67430871/177926c5-83ca-4a92-924f-14bc9dadfec6)
 
