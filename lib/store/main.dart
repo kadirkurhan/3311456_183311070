@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:get/get.dart';
 import 'package:mobile_programming/models/user.dart';
 
@@ -6,6 +8,9 @@ class MainController extends GetxController {
   var token = "".obs;
   var user = UserModel(username: '').obs;
   var sqfliteMessageTitle = "".obs;
+  var gestureResultText = "".obs;
+  var scale = 0.0.obs;
+  var prevScale = 0.0.obs;
 
   List<Map> announcements = [
     {
@@ -71,5 +76,20 @@ class MainController extends GetxController {
       };
       messages.add(message);
     });
+  }
+
+  void setGestureResultText(String text) {
+    gestureResultText.value = text;
+    update();
+  }
+
+  void setScale(double ratio) {
+    scale.value = ratio;
+    update();
+  }
+
+  void setPrevScale(double ratio) {
+    prevScale.value = ratio;
+    update();
   }
 }

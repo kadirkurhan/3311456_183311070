@@ -8,6 +8,7 @@ import 'package:mobile_programming/screens/announcements/announcements.dart';
 import 'package:mobile_programming/screens/auth/login.dart';
 import 'package:mobile_programming/screens/auth/register.dart';
 import 'package:mobile_programming/screens/file/file.dart';
+import 'package:mobile_programming/screens/gestures/gestures.dart';
 import 'package:mobile_programming/screens/graphics/graphics.dart';
 import 'package:mobile_programming/screens/home/home.dart';
 import 'package:mobile_programming/screens/message/message.dart';
@@ -92,6 +93,10 @@ class _MyAppState extends State<MyApp> {
           GetPage(
               name: '/graphics',
               page: () => const GraphicsScreen(),
+              transition: Transition.fade),
+          GetPage(
+              name: '/gestures',
+              page: () => const GesturesScreen(),
               transition: Transition.fade),
         ],
         home: const HomeScreen());

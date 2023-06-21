@@ -29,12 +29,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       Uri.parse(emailUrl),
       headers: {'Content-Type': 'application/json'},
     );
-    print(response);
-    if (response.statusCode == 200) {
-      print('email isteği başarılı');
-    } else {
-      print('email isteği başarısız: ${response}');
-    }
+    Get.snackbar("Bildirim", "Email başarıyla gönderildi.");
   }
 
   Future<void> postData() async {
@@ -75,7 +70,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
     );
 
     if (response.statusCode == 200) {
-      print('POST isteği başarılı');
+      Get.snackbar("Bildirim", "SMS başarıyla gönderildi.");
     } else {
       print('POST isteği başarısız: ${response.body}');
     }
@@ -84,7 +79,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBarComponent("Dosya İşlemleri", shouldLeadingShow: true),
+      appBar: AppBarComponent("Bildirimler", shouldLeadingShow: true),
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 24.0),
